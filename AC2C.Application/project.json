@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "AC2C.Common": "1.0.0-*",
+    "AC2C.DataAccess": "1.0.0-*",
+    "AC2C.Dtos": "1.0.0-*",
+    "AC2C.Entites": "1.0.0-*",
+    "MailKit": "1.10.2",
+    "Microsoft.AspNetCore.Identity": "1.1.0",
+    "Microsoft.Extensions.Caching.SqlServer": "1.1.0",
+    "MimeKit": "1.10.1",
+    "NETStandard.Library": "1.6.1",
+    "System.Data.SqlClient": "4.3.0",
+    "System.Security.Claims": "4.3.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
