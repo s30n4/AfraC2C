@@ -87,6 +87,11 @@ namespace AC2C.DataAccess.Uow
             Set<TEntity>().RemoveRange(entities);
         }
 
+        public void MarkAsDeleted<TEntity>(TEntity entity) where TEntity : class
+        {
+            Entry(entity).State = EntityState.Deleted;
+        }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             ChangeTracker.DetectChanges();

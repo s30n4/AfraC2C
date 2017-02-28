@@ -17,6 +17,9 @@ namespace AC2C.DataAccess.Uow.Contracts
 
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         void MarkAsChanged<TEntity>(TEntity entity) where TEntity : class;
+
+        void MarkAsDeleted<TEntity>(TEntity entity) where TEntity : class;
+
         T GetShadowPropertyValue<T>(object entity, string propertyName) where T : IConvertible;
         object GetShadowPropertyValue(object entity, string propertyName);
 
