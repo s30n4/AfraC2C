@@ -22,16 +22,6 @@ namespace AC2C.Entites.Identity
         [StringLength(450)]
         public string LastName { get; set; }
 
-        [NotMapped]
-        public string DisplayName
-        {
-            get
-            {
-                var displayName = $"{FirstName} {LastName}";
-                return string.IsNullOrWhiteSpace(displayName) ? UserName : displayName;
-            }
-        }
-
         [StringLength(450)]
         public string PhotoFileName { get; set; }
 
@@ -41,11 +31,16 @@ namespace AC2C.Entites.Identity
 
         public DateTimeOffset? LastVisitDateTime { get; set; }
 
+        public DateTimeOffset? LastUpdatePasswordDateTime { get; set; }
+
         public bool IsEmailPublic { get; set; }
 
         public string Location { set; get; }
 
         public bool IsActive { get; set; } = true;
+
+        [StringLength(500)]
+        public string Information { get; set; }
 
         public virtual ICollection<UserUsedPassword> UserUsedPasswords { get; set; }
 
