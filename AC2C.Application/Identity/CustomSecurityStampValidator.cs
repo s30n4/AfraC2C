@@ -15,8 +15,8 @@ namespace AC2C.Application.Identity
     /// </summary>
     public class CustomSecurityStampValidator : SecurityStampValidator<User>
     {
-        private readonly IOptions<IdentityOptions> _options;
-        private readonly IApplicationSignInManager _signInManager;
+       // private readonly IOptions<IdentityOptions> _options;
+      //  private readonly IApplicationSignInManager _signInManager;
         private readonly ISiteStatService _siteStatService;
 
         public CustomSecurityStampValidator(
@@ -25,11 +25,11 @@ namespace AC2C.Application.Identity
             ISiteStatService siteStatService)
             : base(options, (SignInManager<User>)signInManager)
         {
-            _options = options;
-            _options.CheckArgumentIsNull(nameof(_options));
+           // _options = options;
+            options.CheckArgumentIsNull(nameof(options));
 
-            _signInManager = signInManager;
-            _signInManager.CheckArgumentIsNull(nameof(_signInManager));
+           // _signInManager = signInManager;
+            signInManager.CheckArgumentIsNull(nameof(signInManager));
 
             _siteStatService = siteStatService;
             _siteStatService.CheckArgumentIsNull(nameof(_siteStatService));

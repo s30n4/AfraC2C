@@ -63,7 +63,7 @@ namespace AC2C.Application.Identity
                 return _siteSettings.Value.UserDefaultPhoto;
             }
 
-            var avatarPath = Path.Combine(GetUsersAvatarsFolderPath(), photoFileName ?? string.Empty);
+            var avatarPath = Path.Combine(GetUsersAvatarsFolderPath(), photoFileName);
             return !File.Exists(avatarPath) ? _siteSettings.Value.UserDefaultPhoto : photoFileName;
         }
 

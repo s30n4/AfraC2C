@@ -23,12 +23,6 @@ namespace AC2C.Application.Identity
         IApplicationRoleManager
     {
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly IUnitOfWork _uow;
-        private readonly IdentityErrorDescriber _errors;
-        private readonly ILookupNormalizer _keyNormalizer;
-        private readonly ILogger<ApplicationRoleManager> _logger;
-        private readonly IEnumerable<IRoleValidator<Role>> _roleValidators;
-        private readonly IApplicationRoleStore _store;
         private readonly DbSet<User> _users;
 
         public ApplicationRoleManager(
@@ -38,31 +32,26 @@ namespace AC2C.Application.Identity
             IdentityErrorDescriber errors,
             ILogger<ApplicationRoleManager> logger,
             IHttpContextAccessor contextAccessor,
-            IUnitOfWork uow) :
+            IUnitOfWork uow, IHttpContextAccessor contextAccessor1) :
             base((RoleStore<Role, ApplicationDbContext, int, UserRole, RoleClaim>)store, roleValidators, keyNormalizer, errors, logger, contextAccessor)
         {
-            _store = store;
-            _store.CheckArgumentIsNull(nameof(_store));
+            _contextAccessor = contextAccessor1;
 
-            _roleValidators = roleValidators;
-            _roleValidators.CheckArgumentIsNull(nameof(_roleValidators));
+            store.CheckArgumentIsNull(nameof(store));
 
-            _keyNormalizer = keyNormalizer;
-            _keyNormalizer.CheckArgumentIsNull(nameof(_keyNormalizer));
+            roleValidators.CheckArgumentIsNull(nameof(roleValidators));
 
-            _errors = errors;
-            _errors.CheckArgumentIsNull(nameof(_errors));
+            keyNormalizer.CheckArgumentIsNull(nameof(keyNormalizer));
 
-            _logger = logger;
-            _logger.CheckArgumentIsNull(nameof(_logger));
+            errors.CheckArgumentIsNull(nameof(errors));
 
-            _contextAccessor = contextAccessor;
-            _contextAccessor.CheckArgumentIsNull(nameof(_contextAccessor));
+            logger.CheckArgumentIsNull(nameof(logger));
 
-            _uow = uow;
-            _uow.CheckArgumentIsNull(nameof(_uow));
+            contextAccessor.CheckArgumentIsNull(nameof(contextAccessor));
 
-            _users = _uow.Set<User>();
+            uow.CheckArgumentIsNull(nameof(uow));
+
+            _users = uow.Set<User>();
         }
 
         #region BaseClass

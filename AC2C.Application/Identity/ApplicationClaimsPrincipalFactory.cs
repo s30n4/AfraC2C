@@ -10,17 +10,14 @@ using Microsoft.Extensions.Options;
 
 namespace AC2C.Application.Identity
 {
-    /// <summary>
-    /// Customizing claims transformation in ASP.NET Core Identity
-    /// More info: http://www.dotnettips.info/post/2580
-    /// </summary>
+
     public class ApplicationClaimsPrincipalFactory : UserClaimsPrincipalFactory<User, Role>
     {
         public static readonly string PhotoFileName = nameof(PhotoFileName);
 
-        private readonly IOptions<IdentityOptions> _optionsAccessor;
-        private readonly IApplicationRoleManager _roleManager;
-        private readonly IApplicationUserManager _userManager;
+        //private readonly IOptions<IdentityOptions> _optionsAccessor;
+        //private readonly IApplicationRoleManager _roleManager;
+        //private readonly IApplicationUserManager _userManager;
 
         public ApplicationClaimsPrincipalFactory(
             IApplicationUserManager userManager,
@@ -28,14 +25,13 @@ namespace AC2C.Application.Identity
             IOptions<IdentityOptions> optionsAccessor)
             : base((UserManager<User>)userManager, (RoleManager<Role>)roleManager, optionsAccessor)
         {
-            _userManager = userManager;
-            _userManager.CheckArgumentIsNull(nameof(_userManager));
+            userManager.CheckArgumentIsNull(nameof(userManager));
 
-            _roleManager = roleManager;
-            _roleManager.CheckArgumentIsNull(nameof(_roleManager));
+           // _roleManager = roleManager;
+            roleManager.CheckArgumentIsNull(nameof(roleManager));
 
-            _optionsAccessor = optionsAccessor;
-            _optionsAccessor.CheckArgumentIsNull(nameof(_optionsAccessor));
+            //_optionsAccessor = optionsAccessor;
+            optionsAccessor.CheckArgumentIsNull(nameof(optionsAccessor));
         }
 
         public override async Task<ClaimsPrincipal> CreateAsync(User user)

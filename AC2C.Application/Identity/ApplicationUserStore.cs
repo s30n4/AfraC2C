@@ -14,19 +14,19 @@ namespace AC2C.Application.Identity
         UserStore<User, Role, ApplicationDbContext, int, UserClaim, UserRole, UserLogin, UserToken, RoleClaim>,
         IApplicationUserStore
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IdentityErrorDescriber _describer;
+      //  private readonly IUnitOfWork _uow;
+     //   private readonly IdentityErrorDescriber _describer;
 
         public ApplicationUserStore(
             IUnitOfWork uow,
             IdentityErrorDescriber describer)
             : base((ApplicationDbContext)uow, describer)
         {
-            _uow = uow;
-            _uow.CheckArgumentIsNull(nameof(_uow));
+           // _uow = uow;
+            uow.CheckArgumentIsNull(nameof(uow));
 
-            _describer = describer;
-            _describer.CheckArgumentIsNull(nameof(_describer));
+           // _describer = describer;
+            describer.CheckArgumentIsNull(nameof(describer));
         }
 
 

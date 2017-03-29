@@ -12,17 +12,17 @@ namespace AC2C.Application.Identity
     public class SecurityTrimmingService : ISecurityTrimmingService
     {
         private readonly HttpContext _httpContext;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+      //  private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMvcActionsDiscoveryService _mvcActionsDiscoveryService;
 
         public SecurityTrimmingService(
             IHttpContextAccessor httpContextAccessor,
             IMvcActionsDiscoveryService mvcActionsDiscoveryService)
         {
-            _httpContextAccessor = httpContextAccessor;
-            _httpContextAccessor.CheckArgumentIsNull(nameof(_httpContextAccessor));
+          //  _httpContextAccessor = httpContextAccessor;
+            httpContextAccessor.CheckArgumentIsNull(nameof(httpContextAccessor));
 
-            _httpContext = _httpContextAccessor.HttpContext;
+            _httpContext = httpContextAccessor.HttpContext;
 
             _mvcActionsDiscoveryService = mvcActionsDiscoveryService;
             _mvcActionsDiscoveryService.CheckArgumentIsNull(nameof(_mvcActionsDiscoveryService));

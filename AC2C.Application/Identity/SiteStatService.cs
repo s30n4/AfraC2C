@@ -15,7 +15,7 @@ namespace AC2C.Application.Identity
 {
     public class SiteStatService : ISiteStatService
     {
-        private readonly IUnitOfWork _uow;
+     //   private readonly IUnitOfWork _uow;
         private readonly IApplicationUserManager _userManager;
         private readonly DbSet<User> _users;
 
@@ -26,8 +26,8 @@ namespace AC2C.Application.Identity
             _userManager = userManager;
             _userManager.CheckArgumentIsNull(nameof(_userManager));
 
-            _uow = uow;
-            _uow.CheckArgumentIsNull(nameof(_uow));
+            //  _uow = uow;
+            uow.CheckArgumentIsNull(nameof(uow));
 
             _users = uow.Set<User>();
         }

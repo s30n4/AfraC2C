@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using AC2C.Entites.BaseEntites;
-using AC2C.Entites.Identity;
 
 namespace AC2C.Entites.Common
 {

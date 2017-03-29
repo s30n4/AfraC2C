@@ -9,26 +9,24 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AC2C.Application.Identity
 {
-    /// <summary>
-    /// More info: http://www.dotnettips.info/post/2578
-    /// </summary>
+
     public class ApplicationRoleStore :
         RoleStore<Role, ApplicationDbContext, int, UserRole, RoleClaim>,
         IApplicationRoleStore
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IdentityErrorDescriber _describer;
+        //private readonly IUnitOfWork _uow;
+        //private readonly IdentityErrorDescriber _describer;
 
         public ApplicationRoleStore(
             IUnitOfWork uow,
             IdentityErrorDescriber describer)
             : base((ApplicationDbContext)uow, describer)
         {
-            _uow = uow;
-            _uow.CheckArgumentIsNull(nameof(_uow));
+           // _uow = uow;
+            uow.CheckArgumentIsNull(nameof(uow));
 
-            _describer = describer;
-            _describer.CheckArgumentIsNull(nameof(_describer));
+            // _describer = describer;
+            describer.CheckArgumentIsNull(nameof(describer));
         }
 
 

@@ -201,8 +201,10 @@ namespace AC2C.Application.Contracts.Identity
         /// the persisted stamp for the current user, as an asynchronous operation.
         /// </summary>
         /// <param name="principal">The principal whose stamp should be validated.</param>
-        /// <returns>The task object representing the asynchronous operation. The task will contain the <typeparamref name="TUser"/>
-        /// if the stamp matches the persisted value, otherwise it will return false.</returns>
+        /// <returns>The task object representing the asynchronous operation. The task will contain the <typeparamref>
+        ///         <name>TUser</name>
+        ///     </typeparamref>
+        ///     if the stamp matches the persisted value, otherwise it will return false.</returns>
         Task<User> ValidateSecurityStampAsync(ClaimsPrincipal principal);
 
         #endregion

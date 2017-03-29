@@ -36,13 +36,13 @@ namespace AC2C.Application.Identity
             var errors = result.Succeeded ? new List<IdentityError>() : result.Errors.ToList();
 
             // Extending the built-in validator
-            validateEmail(user, errors);
-            validateUserName(user, errors);
+            ValidateEmail(user, errors);
+            ValidateUserName(user, errors);
 
             return !errors.Any() ? IdentityResult.Success : IdentityResult.Failed(errors.ToArray());
         }
 
-        private void validateEmail(User user, List<IdentityError> errors)
+        private void ValidateEmail(User user, List<IdentityError> errors)
         {
             var userEmail = user?.Email;
             if (string.IsNullOrWhiteSpace(userEmail))
@@ -68,7 +68,7 @@ namespace AC2C.Application.Identity
             }
         }
 
-        private static void validateUserName(User user, List<IdentityError> errors)
+        private static void ValidateUserName(User user, List<IdentityError> errors)
         {
             var userName = user?.UserName;
             if (string.IsNullOrWhiteSpace(userName))

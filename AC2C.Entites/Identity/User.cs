@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using AC2C.Entites.AuditableEntity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 

@@ -17,11 +17,11 @@ namespace AC2C.Application.Identity
         SignInManager<User>,
         IApplicationSignInManager
     {
-        private readonly IApplicationUserManager _userManager;
+        //private readonly IApplicationUserManager _userManager;
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly IUserClaimsPrincipalFactory<User> _claimsFactory;
-        private readonly IOptions<IdentityOptions> _optionsAccessor;
-        private readonly ILogger<ApplicationSignInManager> _logger;
+        //private readonly IUserClaimsPrincipalFactory<User> _claimsFactory;
+        //private readonly IOptions<IdentityOptions> _optionsAccessor;
+        //private readonly ILogger<ApplicationSignInManager> _logger;
 
         public ApplicationSignInManager(
             IApplicationUserManager userManager,
@@ -31,20 +31,20 @@ namespace AC2C.Application.Identity
             ILogger<ApplicationSignInManager> logger)
             : base((UserManager<User>)userManager, contextAccessor, claimsFactory, optionsAccessor, logger)
         {
-            _userManager = userManager;
-            _userManager.CheckArgumentIsNull(nameof(_userManager));
+          //  _userManager = userManager;
+            userManager.CheckArgumentIsNull(nameof(userManager));
 
             _contextAccessor = contextAccessor;
             _contextAccessor.CheckArgumentIsNull(nameof(_contextAccessor));
 
-            _claimsFactory = claimsFactory;
-            _claimsFactory.CheckArgumentIsNull(nameof(_claimsFactory));
+            //_claimsFactory = claimsFactory;
+            claimsFactory.CheckArgumentIsNull(nameof(claimsFactory));
 
-            _optionsAccessor = optionsAccessor;
-            _optionsAccessor.CheckArgumentIsNull(nameof(_optionsAccessor));
+           // _optionsAccessor = optionsAccessor;
+            optionsAccessor.CheckArgumentIsNull(nameof(optionsAccessor));
 
-            _logger = logger;
-            _logger.CheckArgumentIsNull(nameof(_logger));
+           // _logger = logger;
+            logger.CheckArgumentIsNull(nameof(logger));
         }
 
         #region BaseClass

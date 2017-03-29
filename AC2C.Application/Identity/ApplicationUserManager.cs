@@ -28,19 +28,19 @@ namespace AC2C.Application.Identity
         IApplicationUserManager
     {
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly IUnitOfWork _uow;
+      //  private readonly IUnitOfWork _uow;
         private readonly IUsedPasswordsService _usedPasswordsService;
-        private readonly IdentityErrorDescriber _errors;
-        private readonly ILookupNormalizer _keyNormalizer;
-        private readonly ILogger<ApplicationUserManager> _logger;
-        private readonly IOptions<IdentityOptions> _optionsAccessor;
-        private readonly IPasswordHasher<User> _passwordHasher;
-        private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
-        private readonly IServiceProvider _services;
+        //private readonly IdentityErrorDescriber _errors;
+        //private readonly ILookupNormalizer _keyNormalizer;
+        //private readonly ILogger<ApplicationUserManager> _logger;
+       // private readonly IOptions<IdentityOptions> _optionsAccessor;
+       // private readonly IPasswordHasher<User> _passwordHasher;
+       // private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
+       // private readonly IServiceProvider _services;
         private readonly DbSet<User> _users;
         private readonly DbSet<Role> _roles;
-        private readonly IApplicationUserStore _userStore;
-        private readonly IEnumerable<IUserValidator<User>> _userValidators;
+       // private readonly IApplicationUserStore _userStore;
+      //  private readonly IEnumerable<IUserValidator<User>> _userValidators;
         private User _currentUserInScope;
 
         public ApplicationUserManager(
@@ -58,38 +58,38 @@ namespace AC2C.Application.Identity
             IUsedPasswordsService usedPasswordsService)
             : base((UserStore<User, Role, ApplicationDbContext, int, UserClaim, UserRole, UserLogin, UserToken, RoleClaim>)store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
-            _userStore = store;
-            _userStore.CheckArgumentIsNull(nameof(_userStore));
+          //  _userStore = store;
+            store.CheckArgumentIsNull(nameof(store));
 
-            _optionsAccessor = optionsAccessor;
-            _optionsAccessor.CheckArgumentIsNull(nameof(_optionsAccessor));
+          //  _optionsAccessor = optionsAccessor;
+            optionsAccessor.CheckArgumentIsNull(nameof(optionsAccessor));
 
-            _passwordHasher = passwordHasher;
-            _passwordHasher.CheckArgumentIsNull(nameof(_passwordHasher));
+           // _passwordHasher = passwordHasher;
+            passwordHasher.CheckArgumentIsNull(nameof(passwordHasher));
 
-            _userValidators = userValidators;
-            _userValidators.CheckArgumentIsNull(nameof(_userValidators));
+          //  _userValidators = userValidators;
+            userValidators.CheckArgumentIsNull(nameof(userValidators));
 
-            _passwordValidators = passwordValidators;
-            _passwordValidators.CheckArgumentIsNull(nameof(_passwordValidators));
+           // _passwordValidators = passwordValidators;
+            passwordValidators.CheckArgumentIsNull(nameof(passwordValidators));
 
-            _keyNormalizer = keyNormalizer;
-            _keyNormalizer.CheckArgumentIsNull(nameof(_keyNormalizer));
+            //_keyNormalizer = keyNormalizer;
+            keyNormalizer.CheckArgumentIsNull(nameof(keyNormalizer));
 
-            _errors = errors;
-            _errors.CheckArgumentIsNull(nameof(_errors));
+            //_errors = errors;
+            errors.CheckArgumentIsNull(nameof(errors));
 
-            _services = services;
-            _services.CheckArgumentIsNull(nameof(_services));
+           // _services = services;
+            services.CheckArgumentIsNull(nameof(services));
 
-            _logger = logger;
-            _logger.CheckArgumentIsNull(nameof(_logger));
+            //_logger = logger;
+            logger.CheckArgumentIsNull(nameof(logger));
 
             _contextAccessor = contextAccessor;
             _contextAccessor.CheckArgumentIsNull(nameof(_contextAccessor));
 
-            _uow = uow;
-            _uow.CheckArgumentIsNull(nameof(_uow));
+           // _uow = uow;
+            uow.CheckArgumentIsNull(nameof(uow));
 
             _usedPasswordsService = usedPasswordsService;
             _usedPasswordsService.CheckArgumentIsNull(nameof(_usedPasswordsService));

@@ -87,7 +87,7 @@ namespace AC2C.Common.Extensions
             int result;
 
             var ok = int.TryParse(GetString(str), out result);
-            return initialValue.HasValue && result == initialValue.Value ? (int?)null : (!ok ? (int?)null : result);
+            return initialValue.HasValue && result == initialValue.Value ? null : (!ok ? (int?)null : result);
         }
 
         public static DateTime GetDateTime(this string str)
@@ -163,7 +163,7 @@ namespace AC2C.Common.Extensions
         public static byte GetByte(this string str)
         {
             var strByte = GetString(str);
-            byte result = 0;
+            byte result;
             byte.TryParse(strByte, out result);
 
             return result;

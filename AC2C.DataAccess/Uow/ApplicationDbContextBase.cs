@@ -66,7 +66,7 @@ namespace AC2C.DataAccess.Uow
 
         public T GetShadowPropertyValue<T>(object entity, string propertyName) where T : IConvertible
         {
-            var value = this.Entry(entity).Property(propertyName).CurrentValue;
+            var value = Entry(entity).Property(propertyName).CurrentValue;
             return value != null
                 ? (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture)
                 : default(T);
@@ -74,7 +74,7 @@ namespace AC2C.DataAccess.Uow
 
         public object GetShadowPropertyValue(object entity, string propertyName)
         {
-            return this.Entry(entity).Property(propertyName).CurrentValue;
+            return Entry(entity).Property(propertyName).CurrentValue;
         }
 
         public void MarkAsChanged<TEntity>(TEntity entity) where TEntity : class
